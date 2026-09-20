@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northstar Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>northstar</span></div>
+      <button class="new-chat" id="newChat"><span>＋</span> New conversation</button>
+      <div class="side-label">Workspace</div>
+      <button class="side-item active"><span>◌</span> Assistant</button>
+      <button class="side-item" id="openSearch"><span>⌕</span> Web research</button>
+      <button class="side-item" id="openBrowse"><span>↗</span> Read a page</button>
+      <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>Local workspace</strong><small>Ready when you are</small></div></div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar"><div><span class="eyebrow">PERSONAL WORKSPACE</span><h1>Assistant</h1></div><div class="topbar-actions"><label class="provider-picker" for="providerSelect">AI <select id="providerSelect"><option value="gemini">Gemini</option><option value="openai">OpenAI</option></select></label><button class="icon-button" id="clearChat" title="Clear conversation">⌫</button></div></header>
+      <div class="content-grid">
+        <section class="chat-panel">
+          <div class="welcome" id="welcome">
+            <div class="welcome-orbit">✦</div>
+            <span class="eyebrow">GOOD TO HAVE YOU HERE</span>
+            <h2>What are we<br><em>figuring out?</em></h2>
+            <p>Ask for a plan, turn a thought into words, or bring a live page into the room.</p>
+            <div class="prompt-grid">
+              <button data-prompt="Help me turn a rough idea into a clear plan."><span>↗</span><b>Make a plan</b><small>From a fuzzy idea to next steps</small></button>
+              <button data-prompt="Help me research the latest information about "><span>⌕</span><b>Research a topic</b><small>Search the web and compare sources</small></button>
+              <button data-prompt="Help me write a concise, thoughtful email about "><span>✎</span><b>Write something</b><small>Draft, edit, or find the right tone</small></button>
+              <button data-prompt="Explain this simply: "><span>◇</span><b>Make it clear</b><small>Break down a complex idea</small></button>
+            </div>
+          </div>
+          <div class="messages" id="messages"></div>
+          <div class="composer-wrap">
+            <div class="context-strip" id="contextStrip" hidden></div>
+            <form class="composer" id="chatForm"><textarea id="messageInput" rows="1" placeholder="Ask anything..." aria-label="Message"></textarea><button class="send-button" title="Send message" type="submit">↑</button></form>
+            <div class="composer-note"><span>Northstar can make mistakes. Check important details.</span><span id="modeLabel">Chat mode</span></div>
+          </div>
+        </section>
+
+        <aside class="research-panel">
+          <div class="panel-heading"><div><span class="eyebrow">TOOLS</span><h3>Bring context in</h3></div><span class="live-pill"><i></i> Live</span></div>
+          <div class="tool-tabs"><button class="tool-tab active" data-tool="search">Search</button><button class="tool-tab" data-tool="browse">Open URL</button></div>
+          <form class="tool-form" id="searchForm"><label for="searchInput">Find current information</label><div class="input-row"><input id="searchInput" placeholder="Search the web" required><button title="Search" type="submit">⌕</button></div></form>
+          <form class="tool-form" id="browseForm" hidden><label for="urlInput">Read a page with the assistant</label><div class="input-row"><input id="urlInput" type="url" placeholder="https://example.com" required><button title="Open page" type="submit">↗</button></div></form>
+          <div class="results" id="results"><div class="empty-results"><span>⌁</span><p>Search results and page context<br>will appear here.</p></div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
